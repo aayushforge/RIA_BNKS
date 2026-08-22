@@ -148,10 +148,13 @@ i.fa, i.fas, i.far, i.fa-solid, i.fa-regular { color: currentColor; }
 /* Language dropdown */
 .lang-dropdown { position: relative; }
 .lang-menu {
+  display: none;
   position: absolute; right: 0; top: 48px; background: var(--color-surface);
   border: 1px solid var(--color-border); border-radius: var(--radius-sm);
   box-shadow: var(--shadow-md); min-width: 140px; overflow: hidden; z-index: 50;
 }
+.lang-menu.open { display: block; }
+
 .lang-menu button { display: block; width: 100%; text-align: left; padding: 10px 14px; background: none; border: none; color: var(--color-text); }
 .lang-menu button:hover { background: rgba(39,174,96,0.1); }
 

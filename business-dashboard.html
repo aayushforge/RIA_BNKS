@@ -20,18 +20,18 @@
     </a>
 
     <div class="sidebar-mode-switch">
-      <a href="personal-dashboard.html">Personal</a>
-      <a href="business-dashboard.html" class="active">Business</a>
+      <a href="personal-dashboard.html" data-i18n="sidebar_personal">Personal</a>
+      <a href="business-dashboard.html" class="active" data-i18n="sidebar_business">Business</a>
     </div>
 
     <nav class="sidebar-nav">
-      <a href="#overview" class="active"><i class="fa-solid fa-gauge nav-ic"></i> Overview</a>
-      <a href="#green-loans"><i class="fa-solid fa-seedling nav-ic"></i> Green Loans</a>
-      <a href="#budget"><i class="fa-solid fa-chart-pie nav-ic"></i> Budget Breakdown</a>
-      <a href="#repayments"><i class="fa-solid fa-calendar-check nav-ic"></i> Repayments</a>
-      <a href="#reports"><i class="fa-solid fa-file-lines nav-ic"></i> Reports</a>
-      <a href="#tools"><i class="fa-solid fa-toolbox nav-ic"></i> Business Tools</a>
-      <a href="#insights"><i class="fa-solid fa-sparkles nav-ic"></i> AI Insights</a>
+      <a href="#overview" class="active"><i class="fa-solid fa-gauge nav-ic"></i> <span data-i18n="nav_overview">Overview</span></a>
+      <a href="#green-loans"><i class="fa-solid fa-seedling nav-ic"></i> <span data-i18n="nav_green_loans">Green Loans</span></a>
+      <a href="#budget"><i class="fa-solid fa-chart-pie nav-ic"></i> <span data-i18n="nav_budget">Budget Breakdown</span></a>
+      <a href="#repayments"><i class="fa-solid fa-calendar-check nav-ic"></i> <span data-i18n="nav_repayments">Repayments</span></a>
+      <a href="#reports"><i class="fa-solid fa-file-lines nav-ic"></i> <span data-i18n="nav_reports">Reports</span></a>
+      <a href="#tools"><i class="fa-solid fa-toolbox nav-ic"></i> <span data-i18n="nav_tools">Business Tools</span></a>
+      <a href="#insights"><i class="fa-solid fa-sparkles nav-ic"></i> <span data-i18n="nav_insights">AI Insights</span></a>
     </nav>
 
     <div class="sidebar-footer">
@@ -43,12 +43,21 @@
             <div class="role">Business Account</div>
           </div>
         </div>
-        <button class="icon-btn" data-action="toggle-theme" aria-label="Toggle dark mode">
-          <i class="fa-solid fa-moon icon-moon"></i>
-          <i class="fa-solid fa-sun icon-sun"></i>
-        </button>
+        <div class="flex gap-2">
+          <div class="lang-dropdown">
+            <button class="icon-btn" data-action="toggle-lang-menu" aria-label="Change language"><span data-lang-label>EN</span></button>
+            <div class="lang-menu">
+              <button data-lang-option="en">English</button>
+              <button data-lang-option="ne">नेपाली (Nepali)</button>
+            </div>
+          </div>
+          <button class="icon-btn" data-action="toggle-theme" aria-label="Toggle dark mode">
+            <i class="fa-solid fa-moon icon-moon"></i>
+            <i class="fa-solid fa-sun icon-sun"></i>
+          </button>
+        </div>
       </div>
-      <a href="#" class="logout-link" id="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+      <a href="#" class="logout-link" id="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="logout">Log Out</span></a>
     </div>
   </aside>
 
@@ -57,11 +66,11 @@
       <button class="icon-btn nav-toggle" data-action="toggle-sidebar" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
       <div>
         <h1 id="welcome-heading">Welcome!</h1>
-        <p>Manage your business finances &amp; green investments.</p>
+        <p data-i18n="bd_subtitle">Manage your business finances &amp; green investments.</p>
       </div>
       <div class="topbar-actions">
-        <button class="btn btn-outline btn-sm" id="add-income-btn"><i class="fa-solid fa-plus"></i> Add Income</button>
-        <button class="btn btn-primary btn-sm" id="apply-loan-btn"><i class="fa-solid fa-seedling"></i> Apply for Green Loan</button>
+        <button class="btn btn-outline btn-sm" id="add-income-btn"><i class="fa-solid fa-plus"></i> <span data-i18n="add_income">Add Income</span></button>
+        <button class="btn btn-primary btn-sm" id="apply-loan-btn"><i class="fa-solid fa-seedling"></i> <span data-i18n="btn_apply_green">Apply for Green Loan</span></button>
       </div>
     </div>
 
@@ -72,32 +81,32 @@
         <div class="stat-card income">
           <div class="stat-top"><div class="stat-icon"><i class="fa-solid fa-sack-dollar"></i></div><span class="trend up">Revenue</span></div>
           <div class="value" id="stat-income">NRs 0</div>
-          <div class="label">Total Business Income</div>
+          <div class="label" data-i18n="bd_stat_income">Total Business Income</div>
         </div>
         <div class="stat-card expense">
           <div class="stat-top"><div class="stat-icon"><i class="fa-solid fa-receipt"></i></div><span class="trend down">Expenses</span></div>
           <div class="value" id="stat-expense">NRs 0</div>
-          <div class="label">Operating Expenses</div>
+          <div class="label" data-i18n="bd_stat_expense">Operating Expenses</div>
         </div>
         <div class="stat-card profit">
           <div class="stat-top"><div class="stat-icon"><i class="fa-solid fa-chart-line"></i></div><span class="trend up" id="margin-trend">0%</span></div>
           <div class="value" id="stat-profit">NRs 0</div>
-          <div class="label">Net Profit Margin</div>
+          <div class="label" data-i18n="bd_stat_profit">Net Profit Margin</div>
         </div>
         <div class="stat-card savings">
           <div class="stat-top"><div class="stat-icon"><i class="fa-solid fa-piggy-bank"></i></div><span class="trend up">Savings</span></div>
           <div class="value" id="stat-savings">NRs 0</div>
-          <div class="label">Business Savings</div>
+          <div class="label" data-i18n="bd_stat_savings">Business Savings</div>
         </div>
       </div>
 
       <div class="dash-grid">
         <div class="panel">
-          <div class="panel-head"><h3>Profit &amp; Loss Trend</h3><span class="text-small">Recent activity</span></div>
+          <div class="panel-head"><h3 data-i18n="panel_pl_trend">Profit &amp; Loss Trend</h3><span class="text-small" data-i18n="panel_recent_activity">Recent activity</span></div>
           <div class="chart-wrap"><canvas id="trend-chart"></canvas></div>
         </div>
         <div class="panel">
-          <div class="panel-head"><h3>Recent Transactions</h3></div>
+          <div class="panel-head"><h3 data-i18n="panel_recent_tx">Recent Transactions</h3></div>
           <div class="tx-list" id="tx-list"></div>
         </div>
       </div>
@@ -106,8 +115,8 @@
     <section id="green-loans" class="mt-4">
       <div class="panel">
         <div class="panel-head">
-          <h3><i class="fa-solid fa-seedling" style="color:var(--color-secondary)"></i> Green Equipment Loans</h3>
-          <button class="btn btn-primary btn-sm" id="apply-loan-btn-2"><i class="fa-solid fa-plus"></i> Apply</button>
+          <h3><i class="fa-solid fa-seedling" style="color:var(--color-secondary)"></i> <span data-i18n="panel_green_loans">Green Equipment Loans</span></h3>
+          <button class="btn btn-primary btn-sm" id="apply-loan-btn-2"><i class="fa-solid fa-plus"></i> <span data-i18n="btn_apply">Apply</span></button>
         </div>
         <div class="table-wrap">
           <table class="data-table">
@@ -121,7 +130,7 @@
     <div class="dash-grid mt-4">
       <section id="budget">
         <div class="panel">
-          <div class="panel-head"><h3>Budget Breakdown</h3></div>
+          <div class="panel-head"><h3 data-i18n="panel_budget_breakdown">Budget Breakdown</h3></div>
           <div class="chart-wrap"><canvas id="expense-pie"></canvas></div>
           <ul class="legend-list" id="expense-legend"></ul>
         </div>
@@ -129,14 +138,14 @@
 
       <section id="repayments">
         <div class="panel">
-          <div class="panel-head"><h3>Repayment Calendar</h3><i class="fa-solid fa-bell" title="Alarm & vibration reminders"></i></div>
+          <div class="panel-head"><h3 data-i18n="panel_repay_calendar">Repayment Calendar</h3><i class="fa-solid fa-bell" title="Alarm & vibration reminders"></i></div>
           <div class="calendar" id="calendar-view"></div>
           <div class="mt-3">
-            <label style="font-weight:600;font-size:14px;">Record a repayment</label>
+            <label style="font-weight:600;font-size:14px;" data-i18n="record_repayment">Record a repayment</label>
             <form id="repay-form" class="flex gap-2 mt-2">
               <select id="repay-loan" class="input-wrap" style="flex:1;padding:10px;border-radius:8px;border:1.5px solid var(--color-border);background:var(--color-surface);color:var(--color-text);"></select>
               <input type="number" id="repay-amount" placeholder="Amount" min="1" required style="width:120px;padding:10px;border-radius:8px;border:1.5px solid var(--color-border);background:var(--color-surface);color:var(--color-text);">
-              <button type="submit" class="btn btn-primary btn-sm">Pay</button>
+              <button type="submit" class="btn btn-primary btn-sm" data-i18n="btn_pay">Pay</button>
             </form>
           </div>
         </div>
@@ -146,18 +155,18 @@
     <div class="dash-grid mt-4">
       <section id="reports">
         <div class="panel">
-          <div class="panel-head"><h3>Financial Reports</h3></div>
-          <p>P&amp;L statements, cash flow &amp; green impact — export anytime.</p>
+          <div class="panel-head"><h3 data-i18n="panel_financial_reports">Financial Reports</h3></div>
+          <p data-i18n="reports_body_biz">P&amp;L statements, cash flow &amp; green impact — export anytime.</p>
           <div class="flex gap-2">
-            <button class="btn btn-outline btn-sm" id="export-csv-btn"><i class="fa-solid fa-file-csv"></i> Export CSV</button>
-            <button class="btn btn-outline btn-sm" id="export-pdf-btn"><i class="fa-solid fa-file-pdf"></i> Export PDF</button>
+            <button class="btn btn-outline btn-sm" id="export-csv-btn"><i class="fa-solid fa-file-csv"></i> <span data-i18n="btn_export_csv">Export CSV</span></button>
+            <button class="btn btn-outline btn-sm" id="export-pdf-btn"><i class="fa-solid fa-file-pdf"></i> <span data-i18n="btn_export_pdf">Export PDF</span></button>
           </div>
           <div class="grid grid-2 mt-4">
             <div class="stat-box" style="background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-3);">
-              <strong id="green-co2">—</strong><div class="text-small">Est. CO₂ avoided (kg/yr)</div>
+              <strong id="green-co2">—</strong><div class="text-small" data-i18n="co2_avoided">Est. CO₂ avoided (kg/yr)</div>
             </div>
             <div class="stat-box" style="background:var(--color-bg);border:1px solid var(--color-border);border-radius:var(--radius-md);padding:var(--space-3);">
-              <strong id="growth-projection">—</strong><div class="text-small">Projected next-month revenue</div>
+              <strong id="growth-projection">—</strong><div class="text-small" data-i18n="projected_revenue">Projected next-month revenue</div>
             </div>
           </div>
         </div>
@@ -165,7 +174,7 @@
 
       <section id="insights">
         <div class="panel">
-          <div class="panel-head"><h3>AI Business Insights</h3><i class="fa-solid fa-robot"></i></div>
+          <div class="panel-head"><h3 data-i18n="panel_ai_business">AI Business Insights</h3><i class="fa-solid fa-robot"></i></div>
           <div id="insights-list"></div>
         </div>
       </section>
@@ -173,12 +182,12 @@
 
     <section id="tools" class="mt-4">
       <div class="panel">
-        <div class="panel-head"><h3>Business Tools</h3><span class="badge-tag">Phase 2 &amp; 3 Roadmap</span></div>
+        <div class="panel-head"><h3 data-i18n="panel_business_tools">Business Tools</h3><span class="badge-tag" data-i18n="tools_badge">Phase 2 &amp; 3 Roadmap</span></div>
         <div class="grid grid-4">
-          <div class="card feature-card"><div class="feature-icon"><i class="fa-solid fa-boxes-stacked"></i></div><h3 style="font-size:16px;">Inventory Management</h3><p class="text-small">Track stock levels &amp; reorder points.</p></div>
-          <div class="card feature-card"><div class="feature-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div><h3 style="font-size:16px;">Invoice Generation</h3><p class="text-small">Create &amp; send client invoices.</p></div>
-          <div class="card feature-card"><div class="feature-icon"><i class="fa-solid fa-calculator"></i></div><h3 style="font-size:16px;">Nepal Tax Calculator</h3><p class="text-small">Estimate GST &amp; income tax.</p></div>
-          <div class="card feature-card"><div class="feature-icon"><i class="fa-solid fa-users"></i></div><h3 style="font-size:16px;">Employee Management</h3><p class="text-small">Payroll &amp; staff records.</p></div>
+          <div class="card feature-card"><div class="feature-icon"><i class="fa-solid fa-boxes-stacked"></i></div><h3 style="font-size:16px;" data-i18n="tool_inventory">Inventory Management</h3><p class="text-small" data-i18n="tool_inventory_desc">Track stock levels &amp; reorder points.</p></div>
+          <div class="card feature-card"><div class="feature-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div><h3 style="font-size:16px;" data-i18n="tool_invoice">Invoice Generation</h3><p class="text-small" data-i18n="tool_invoice_desc">Create &amp; send client invoices.</p></div>
+          <div class="card feature-card"><div class="feature-icon"><i class="fa-solid fa-calculator"></i></div><h3 style="font-size:16px;" data-i18n="tool_tax">Nepal Tax Calculator</h3><p class="text-small" data-i18n="tool_tax_desc">Estimate GST &amp; income tax.</p></div>
+          <div class="card feature-card"><div class="feature-icon"><i class="fa-solid fa-users"></i></div><h3 style="font-size:16px;" data-i18n="tool_employee">Employee Management</h3><p class="text-small" data-i18n="tool_employee_desc">Payroll &amp; staff records.</p></div>
         </div>
       </div>
     </section>

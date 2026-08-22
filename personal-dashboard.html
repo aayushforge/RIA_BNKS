@@ -20,18 +20,18 @@
     </a>
 
     <div class="sidebar-mode-switch">
-      <a href="personal-dashboard.html" class="active">Personal</a>
-      <a href="business-dashboard.html">Business</a>
+      <a href="personal-dashboard.html" class="active" data-i18n="sidebar_personal">Personal</a>
+      <a href="business-dashboard.html" data-i18n="sidebar_business">Business</a>
     </div>
 
     <nav class="sidebar-nav">
-      <a href="#overview" class="active"><i class="fa-solid fa-gauge nav-ic"></i> Overview</a>
-      <a href="#transactions"><i class="fa-solid fa-right-left nav-ic"></i> Transactions</a>
-      <a href="#loans"><i class="fa-solid fa-hand-holding-dollar nav-ic"></i> Loans</a>
-      <a href="#savings"><i class="fa-solid fa-piggy-bank nav-ic"></i> Savings Goals</a>
-      <a href="#calendar"><i class="fa-solid fa-calendar-days nav-ic"></i> Calendar</a>
-      <a href="#reports"><i class="fa-solid fa-file-lines nav-ic"></i> Reports</a>
-      <a href="#insights"><i class="fa-solid fa-sparkles nav-ic"></i> AI Insights</a>
+      <a href="#overview" class="active"><i class="fa-solid fa-gauge nav-ic"></i> <span data-i18n="nav_overview">Overview</span></a>
+      <a href="#transactions"><i class="fa-solid fa-right-left nav-ic"></i> <span data-i18n="nav_transactions">Transactions</span></a>
+      <a href="#loans"><i class="fa-solid fa-hand-holding-dollar nav-ic"></i> <span data-i18n="nav_loans">Loans</span></a>
+      <a href="#savings"><i class="fa-solid fa-piggy-bank nav-ic"></i> <span data-i18n="nav_savings">Savings Goals</span></a>
+      <a href="#calendar"><i class="fa-solid fa-calendar-days nav-ic"></i> <span data-i18n="nav_calendar">Calendar</span></a>
+      <a href="#reports"><i class="fa-solid fa-file-lines nav-ic"></i> <span data-i18n="nav_reports">Reports</span></a>
+      <a href="#insights"><i class="fa-solid fa-sparkles nav-ic"></i> <span data-i18n="nav_insights">AI Insights</span></a>
     </nav>
 
     <div class="sidebar-footer">
@@ -43,12 +43,21 @@
             <div class="role">Personal Account</div>
           </div>
         </div>
-        <button class="icon-btn" data-action="toggle-theme" aria-label="Toggle dark mode">
-          <i class="fa-solid fa-moon icon-moon"></i>
-          <i class="fa-solid fa-sun icon-sun"></i>
-        </button>
+        <div class="flex gap-2">
+          <div class="lang-dropdown">
+            <button class="icon-btn" data-action="toggle-lang-menu" aria-label="Change language"><span data-lang-label>EN</span></button>
+            <div class="lang-menu">
+              <button data-lang-option="en">English</button>
+              <button data-lang-option="ne">नेपाली (Nepali)</button>
+            </div>
+          </div>
+          <button class="icon-btn" data-action="toggle-theme" aria-label="Toggle dark mode">
+            <i class="fa-solid fa-moon icon-moon"></i>
+            <i class="fa-solid fa-sun icon-sun"></i>
+          </button>
+        </div>
       </div>
-      <a href="#" class="logout-link" id="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+      <a href="#" class="logout-link" id="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> <span data-i18n="logout">Log Out</span></a>
     </div>
   </aside>
 
@@ -57,11 +66,11 @@
       <button class="icon-btn nav-toggle" data-action="toggle-sidebar" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
       <div>
         <h1 id="welcome-heading">Welcome!</h1>
-        <p>Here's where your money stands today.</p>
+        <p data-i18n="pd_subtitle">Here's where your money stands today.</p>
       </div>
       <div class="topbar-actions">
-        <button class="btn btn-outline btn-sm" id="add-income-btn"><i class="fa-solid fa-plus"></i> Add Income</button>
-        <button class="btn btn-primary btn-sm" id="add-expense-btn"><i class="fa-solid fa-plus"></i> Add Expense</button>
+        <button class="btn btn-outline btn-sm" id="add-income-btn"><i class="fa-solid fa-plus"></i> <span data-i18n="add_income">Add Income</span></button>
+        <button class="btn btn-primary btn-sm" id="add-expense-btn"><i class="fa-solid fa-plus"></i> <span data-i18n="add_expense">Add Expense</span></button>
       </div>
     </div>
 
@@ -72,33 +81,33 @@
         <div class="stat-card income">
           <div class="stat-top"><div class="stat-icon"><i class="fa-solid fa-arrow-down"></i></div><span class="trend up">Income</span></div>
           <div class="value" id="stat-income">NRs 0</div>
-          <div class="label">Monthly Income</div>
+          <div class="label" data-i18n="stat_income">Monthly Income</div>
         </div>
         <div class="stat-card expense">
           <div class="stat-top"><div class="stat-icon"><i class="fa-solid fa-arrow-up"></i></div><span class="trend down">Expense</span></div>
           <div class="value" id="stat-expense">NRs 0</div>
-          <div class="label">Monthly Expenditure</div>
+          <div class="label" data-i18n="stat_expense">Monthly Expenditure</div>
         </div>
         <div class="stat-card savings">
           <div class="stat-top"><div class="stat-icon"><i class="fa-solid fa-piggy-bank"></i></div><span class="trend up">Savings</span></div>
           <div class="value" id="stat-savings">NRs 0</div>
-          <div class="label">Net Savings</div>
+          <div class="label" data-i18n="stat_savings">Net Savings</div>
         </div>
         <div class="stat-card profit">
           <div class="stat-top"><div class="stat-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div><span class="trend up">Loans</span></div>
           <div class="value" id="stat-loans">0</div>
-          <div class="label">Active Loans</div>
+          <div class="label" data-i18n="stat_loans">Active Loans</div>
         </div>
       </div>
 
       <div class="dash-grid">
         <div class="panel">
-          <div class="panel-head"><h3>Expense Breakdown</h3><span class="text-small">This period</span></div>
+          <div class="panel-head"><h3 data-i18n="panel_expense_breakdown">Expense Breakdown</h3><span class="text-small" data-i18n="panel_period">This period</span></div>
           <div class="chart-wrap"><canvas id="expense-pie"></canvas></div>
           <ul class="legend-list" id="expense-legend"></ul>
         </div>
         <div class="panel" id="transactions">
-          <div class="panel-head"><h3>Recent Transactions</h3><a href="#reports" class="text-small">View all</a></div>
+          <div class="panel-head"><h3 data-i18n="panel_recent_tx">Recent Transactions</h3><a href="#reports" class="text-small" data-i18n="panel_view_all">View all</a></div>
           <div class="tx-list" id="tx-list"></div>
         </div>
       </div>
@@ -107,8 +116,8 @@
     <section id="loans" class="mt-4">
       <div class="panel">
         <div class="panel-head">
-          <h3>Loan Management</h3>
-          <button class="btn btn-primary btn-sm" id="add-loan-btn"><i class="fa-solid fa-plus"></i> Add Loan</button>
+          <h3 data-i18n="panel_loan_mgmt">Loan Management</h3>
+          <button class="btn btn-primary btn-sm" id="add-loan-btn"><i class="fa-solid fa-plus"></i> <span data-i18n="btn_add_loan">Add Loan</span></button>
         </div>
         <div class="table-wrap">
           <table class="data-table">
@@ -123,8 +132,8 @@
       <section id="savings">
         <div class="panel">
           <div class="panel-head">
-            <h3>Savings Goals</h3>
-            <button class="btn btn-outline btn-sm" id="add-goal-btn"><i class="fa-solid fa-plus"></i> New Goal</button>
+            <h3 data-i18n="panel_savings_goals">Savings Goals</h3>
+            <button class="btn btn-outline btn-sm" id="add-goal-btn"><i class="fa-solid fa-plus"></i> <span data-i18n="btn_new_goal">New Goal</span></button>
           </div>
           <div id="goals-list"></div>
         </div>
@@ -132,7 +141,7 @@
 
       <section id="calendar">
         <div class="panel">
-          <div class="panel-head"><h3>Loan &amp; Bill Calendar</h3><i class="fa-solid fa-bell" title="Alarm & vibration reminders enabled"></i></div>
+          <div class="panel-head"><h3 data-i18n="panel_calendar">Loan &amp; Bill Calendar</h3><i class="fa-solid fa-bell" title="Alarm & vibration reminders enabled"></i></div>
           <div class="calendar" id="calendar-view"></div>
         </div>
       </section>
@@ -141,11 +150,11 @@
     <div class="dash-grid mt-4">
       <section id="reports">
         <div class="panel">
-          <div class="panel-head"><h3>Reports</h3></div>
-          <p>Export your transaction history for the month or year.</p>
+          <div class="panel-head"><h3 data-i18n="panel_reports">Reports</h3></div>
+          <p data-i18n="reports_body">Export your transaction history for the month or year.</p>
           <div class="flex gap-2">
-            <button class="btn btn-outline btn-sm" id="export-csv-btn"><i class="fa-solid fa-file-csv"></i> Export CSV</button>
-            <button class="btn btn-outline btn-sm" id="export-pdf-btn"><i class="fa-solid fa-file-pdf"></i> Export PDF</button>
+            <button class="btn btn-outline btn-sm" id="export-csv-btn"><i class="fa-solid fa-file-csv"></i> <span data-i18n="btn_export_csv">Export CSV</span></button>
+            <button class="btn btn-outline btn-sm" id="export-pdf-btn"><i class="fa-solid fa-file-pdf"></i> <span data-i18n="btn_export_pdf">Export PDF</span></button>
           </div>
           <div class="chart-wrap mt-4" style="height:220px;"><canvas id="trend-chart"></canvas></div>
         </div>
@@ -153,7 +162,7 @@
 
       <section id="insights">
         <div class="panel">
-          <div class="panel-head"><h3>AI-Powered Financial Tips</h3><i class="fa-solid fa-robot"></i></div>
+          <div class="panel-head"><h3 data-i18n="panel_ai_tips">AI-Powered Financial Tips</h3><i class="fa-solid fa-robot"></i></div>
           <div id="insights-list"></div>
         </div>
       </section>
