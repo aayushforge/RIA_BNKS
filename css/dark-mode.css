@@ -1,0 +1,84 @@
+/* ==========================================================================
+   HISAB — Dark Mode
+   Activated via [data-theme="dark"] on <html>, toggled by js/main.js
+   ========================================================================== */
+
+:root[data-theme="dark"] {
+  --color-bg: #1A1A2E;
+  --color-surface: #22233b;
+  --color-text: #ECF0F1;
+  --color-text-muted: #a7b0c0;
+  --color-border: #33344f;
+
+  --color-primary: #ECF0F1;
+  --color-primary-contrast: #1A1A2E;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.35);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.45);
+  --shadow-lg: 0 16px 40px rgba(0,0,0,0.55);
+}
+
+:root[data-theme="dark"] .site-header {
+  background: rgba(26,26,46,0.85);
+}
+
+:root[data-theme="dark"] .brand .theme-logo-light { display: none; }
+:root[data-theme="dark"] .brand .theme-logo-dark { display: block; }
+
+:root[data-theme="dark"] .hero {
+  background: linear-gradient(160deg, rgba(39,174,96,0.14), transparent 60%), var(--color-bg);
+}
+
+:root[data-theme="dark"] .auth-visual {
+  background: linear-gradient(155deg, #14172a, #0d0f1c);
+}
+
+:root[data-theme="dark"] .site-footer {
+  background: #12131f;
+}
+
+:root[data-theme="dark"] .icon-btn,
+:root[data-theme="dark"] .btn-outline {
+  border-color: var(--color-border);
+  color: var(--color-text);
+}
+
+:root[data-theme="dark"] .btn-google {
+  background: var(--color-surface);
+  color: var(--color-text);
+  border-color: var(--color-border);
+}
+
+:root[data-theme="dark"] .stats-strip .stat-box,
+:root[data-theme="dark"] .hero-visual .mini-card,
+:root[data-theme="dark"] .day-cell.today {
+  background: rgba(39,174,96,0.10);
+}
+
+:root[data-theme="dark"] input,
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] textarea {
+  color-scheme: dark;
+}
+
+:root[data-theme="dark"] ::placeholder { color: #6f7891; }
+
+/* Theme toggle icon swap handled via JS adding .is-dark on the button */
+.icon-btn .icon-sun { display: none; }
+.icon-btn .icon-moon { display: inline; }
+:root[data-theme="dark"] .icon-btn .icon-sun { display: inline; }
+:root[data-theme="dark"] .icon-btn .icon-moon { display: none; }
+
+/* Respect system preference only when user hasn't explicitly chosen */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    --color-bg: #1A1A2E;
+    --color-surface: #22233b;
+    --color-text: #ECF0F1;
+    --color-text-muted: #a7b0c0;
+    --color-border: #33344f;
+    --color-primary: #ECF0F1;
+  }
+  :root:not([data-theme="light"]):not([data-theme="dark"]) .brand .theme-logo-light { display: none; }
+  :root:not([data-theme="light"]):not([data-theme="dark"]) .brand .theme-logo-dark { display: block; }
+}
