@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 380" width="920" height="380" role="img" aria-label="HISAB logo">
+  <title>HISAB</title>
+  <defs>
+    <linearGradient id="hisabGreen" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#123c22"/>
+      <stop offset="45%" stop-color="#1e8a3c"/>
+      <stop offset="80%" stop-color="#27AE60"/>
+      <stop offset="100%" stop-color="#7ee3a0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Growth-arrow ribbon forming the left leg of the "H" -->
+  <path d="M38,340 C66,300 88,262 116,214 C146,164 162,132 190,86"
+        fill="none" stroke="url(#hisabGreen)" stroke-width="46"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Arrowhead -->
+  <path d="M158,96 L262,52 L206,138 Z" fill="url(#hisabGreen)"/>
+
+  <!-- Right leg of the H -->
+  <rect x="228" y="70" width="52" height="282" rx="4" fill="#ECF0F1"/>
+  <!-- H crossbar -->
+  <rect x="140" y="168" width="140" height="46" rx="4" fill="#ECF0F1"/>
+
+  <!-- lowercase i (dotless, monochrome/outline style) -->
+  <rect x="300" y="150" width="42" height="202" rx="4" fill="#ECF0F1"/>
+
+  <!-- "sab" wordmark -->
+  <text x="360" y="352" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="232" letter-spacing="-4" fill="#ECF0F1">sab</text>
+</svg>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account — HISAB</title>
+<link rel="icon" href="assets/icons/favicon.png" type="image/png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dark-mode.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="HISAB" class="logo theme-logo-light">
+      <img src="assets/logo-dark.png" alt="HISAB" class="logo theme-logo-dark">
+    </a>
+    <nav class="main-nav">
+      <a href="about.html" data-i18n="nav_about">About</a>
+      <a href="index.html#features" data-i18n="nav_features">Features</a>
+      <a href="index.html#contact" data-i18n="nav_contact">Contact</a>
+      <a href="login.html" class="mobile-only-link">Log In</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn" data-action="toggle-theme" aria-label="Toggle dark mode">
+        <i class="fa-solid fa-moon icon-moon"></i>
+        <i class="fa-solid fa-sun icon-sun"></i>
+      </button>
+      <a href="login.html" class="btn btn-ghost">Log In</a>
+      <button class="icon-btn nav-toggle" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<main class="auth-shell">
+  <div class="auth-visual">
+    <span class="hero-badge" style="background:rgba(39,174,96,0.2);color:#9ee9b8;">Join HISAB</span>
+    <h2>Two account types. One smarter way to manage money.</h2>
+    <p>Choose Personal to track everyday finances, or Business to unlock green equipment financing, invoicing and payroll tools.</p>
+    <ul>
+      <li><i class="fa-solid fa-user-shield"></i> Email OTP-verified accounts</li>
+      <li><i class="fa-solid fa-leaf"></i> No-credit-score green loans (Business)</li>
+      <li><i class="fa-solid fa-lock"></i> Encrypted, GDPR-aligned data handling</li>
+    </ul>
+  </div>
+
+  <div class="auth-form-wrap">
+    <div class="auth-card">
+      <div class="brand">
+        <img src="assets/logo.png" alt="HISAB" class="logo theme-logo-light">
+        <img src="assets/logo-dark.png" alt="HISAB" class="logo theme-logo-dark">
+      </div>
+      <h1>Create Your Account</h1>
+      <p class="subtitle">Get started in under a minute.</p>
+
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="personal">Personal</button>
+        <button class="tab-btn" data-tab="business">Business</button>
+      </div>
+
+      <!-- Personal registration -->
+      <div class="tab-panel active" id="tab-personal">
+        <form id="personal-register-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="p-first-name">First Name</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-user field-icon"></i>
+                <input type="text" id="p-first-name" required placeholder="Aasmin">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="p-last-name">Last Name</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-user field-icon"></i>
+                <input type="text" id="p-last-name" required placeholder="Shrestha">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="p-email">Email Address</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-envelope field-icon"></i>
+              <input type="email" id="p-email" required placeholder="you@example.com">
+            </div>
+            <span class="field-error">This email is already registered.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="p-password">Password</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-lock field-icon"></i>
+              <input type="password" id="p-password" required minlength="8" placeholder="Min. 8 characters">
+              <button type="button" class="toggle-visibility" data-toggle-for="p-password" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
+            </div>
+            <div class="password-strength"><span></span></div>
+            <p class="field-hint">Use 8+ characters with a number and a special character.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="p-confirm-password">Confirm Password</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-lock field-icon"></i>
+              <input type="password" id="p-confirm-password" required placeholder="Re-enter password">
+            </div>
+            <span class="field-error">Passwords do not match.</span>
+          </div>
+
+          <label class="checkbox-row mt-3" style="margin-bottom:var(--space-4);">
+            <input type="checkbox" id="p-consent" required>
+            <span class="text-small">I agree to the <a href="#">Privacy Policy</a> &amp; consent to GDPR-aligned data processing.</span>
+          </label>
+
+          <div class="flex gap-2">
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+            <a href="index.html" class="btn btn-outline btn-block text-center">Cancel</a>
+          </div>
+        </form>
+      </div>
+
+      <!-- Business registration -->
+      <div class="tab-panel" id="tab-business">
+        <form id="business-register-form" novalidate>
+          <div class="form-group">
+            <label for="b-business-name">Business Name</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-building field-icon"></i>
+              <input type="text" id="b-business-name" required placeholder="Green Leaf Traders">
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="b-pan">PAN Number</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-id-card field-icon"></i>
+                <input type="text" id="b-pan" required placeholder="123456789">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="b-phone">Phone Number</label>
+              <div class="input-wrap">
+                <i class="fa-solid fa-phone field-icon"></i>
+                <input type="tel" id="b-phone" required placeholder="98XXXXXXXX">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="b-email">Email Address</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-envelope field-icon"></i>
+              <input type="email" id="b-email" required placeholder="business@example.com">
+            </div>
+            <span class="field-error">This email is already registered.</span>
+          </div>
+
+          <div class="form-group">
+            <label for="b-password">Password</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-lock field-icon"></i>
+              <input type="password" id="b-password" required minlength="8" placeholder="Min. 8 characters">
+              <button type="button" class="toggle-visibility" data-toggle-for="b-password" aria-label="Show password"><i class="fa-solid fa-eye"></i></button>
+            </div>
+            <div class="password-strength"><span></span></div>
+            <p class="field-hint">Use 8+ characters with a number and a special character.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="b-confirm-password">Confirm Password</label>
+            <div class="input-wrap">
+              <i class="fa-solid fa-lock field-icon"></i>
+              <input type="password" id="b-confirm-password" required placeholder="Re-enter password">
+            </div>
+            <span class="field-error">Passwords do not match.</span>
+          </div>
+
+          <label class="checkbox-row mt-3" style="margin-bottom:var(--space-4);">
+            <input type="checkbox" id="b-consent" required>
+            <span class="text-small">I agree to the <a href="#">Privacy Policy</a> &amp; consent to GDPR-aligned data processing.</span>
+          </label>
+
+          <div class="flex gap-2">
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+            <a href="index.html" class="btn btn-outline btn-block text-center">Cancel</a>
+          </div>
+        </form>
+      </div>
+
+      <p class="auth-switch">Already have an account? <a href="login.html">Log in</a></p>
+    </div>
+  </div>
+</main>
+
+<!-- OTP Verification Modal -->
+<div class="modal-overlay hidden" id="otp-modal">
+  <div class="modal">
+    <button class="icon-btn close-modal" data-action="close-otp"><i class="fa-solid fa-xmark"></i></button>
+    <div class="otp-icon"><i class="fa-solid fa-envelope-circle-check"></i></div>
+    <h3>Verify Your Email</h3>
+    <p>Enter the 4-digit code sent to <strong id="otp-email-display">your email</strong>.</p>
+    <form id="otp-form">
+      <div class="otp-inputs">
+        <input type="text" inputmode="numeric" maxlength="1" class="otp-box" required>
+        <input type="text" inputmode="numeric" maxlength="1" class="otp-box" required>
+        <input type="text" inputmode="numeric" maxlength="1" class="otp-box" required>
+        <input type="text" inputmode="numeric" maxlength="1" class="otp-box" required>
+      </div>
+      <div class="otp-timer">Resend code in <span id="otp-countdown">60</span>s · <button type="button" id="resend-otp-btn" disabled>Resend OTP</button></div>
+      <button type="submit" class="btn btn-primary btn-block">Verify &amp; Create Account</button>
+    </form>
+  </div>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/auth.js"></script>
+</body>
+</html>
