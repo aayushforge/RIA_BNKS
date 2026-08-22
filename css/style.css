@@ -154,7 +154,6 @@ i.fa, i.fas, i.far, i.fa-solid, i.fa-regular { color: currentColor; }
   box-shadow: var(--shadow-md); min-width: 140px; overflow: hidden; z-index: 50;
 }
 .lang-menu.open { display: block; }
-
 .lang-menu button { display: block; width: 100%; text-align: left; padding: 10px 14px; background: none; border: none; color: var(--color-text); }
 .lang-menu button:hover { background: rgba(39,174,96,0.1); }
 
@@ -165,6 +164,8 @@ i.fa, i.fas, i.far, i.fa-solid, i.fa-regular { color: currentColor; }
   overflow: hidden;
 }
 .hero .container { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: var(--space-6); align-items: center; }
+/* Single-column hero variant (e.g. About page intro) — overrides the 2-col grid above */
+.hero-solo .container { display: block; }
 .hero-badge {
   display: inline-flex; align-items: center; gap: var(--space-2);
   background: rgba(39,174,96,0.12); color: var(--color-secondary-dark);
