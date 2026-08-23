@@ -122,7 +122,12 @@ def current_user_doc():
 # ---------------------------------------------------------------------------
 @api.route("/health", methods=["GET"])
 def health():
-    return jsonify({"status": "ok", "service": "hisab-backend"})
+    try:
+        get_db().command("ping")
+        db_status = "connected"
+    except Exception as e:
+        db_status = f"failed: {e}"
+    return jsonify({"status": "ok", "service": "hisab-backend", "database": db_status})
 
 
 # ---------------------------------------------------------------------------
