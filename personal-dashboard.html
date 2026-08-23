@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Dashboard — HISAB</title>
+<link rel="icon" href="assets/icons/favicon.png" type="image/png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/dark-mode.css">
+<link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-protected>
+
+<div class="app-shell">
+  <aside class="sidebar">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="HISAB" class="logo theme-logo-light">
+      <img src="assets/logo-dark.png" alt="HISAB" class="logo theme-logo-dark">
+    </a>
+
+    <div class="sidebar-mode-switch">
+      <a href="personal-dashboard.html" class="active">Personal</a>
+      <a href="business-dashboard.html">Business</a>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#overview" class="active"><i class="fa-solid fa-gauge nav-ic"></i> Overview</a>
+      <a href="#transactions"><i class="fa-solid fa-right-left nav-ic"></i> Transactions</a>
+      <a href="#loans"><i class="fa-solid fa-hand-holding-dollar nav-ic"></i> Loans</a>
+      <a href="#savings"><i class="fa-solid fa-piggy-bank nav-ic"></i> Savings Goals</a>
+      <a href="#calendar"><i class="fa-solid fa-calendar-days nav-ic"></i> Calendar</a>
+      <a href="#reports"><i class="fa-solid fa-file-lines nav-ic"></i> Reports</a>
+      <a href="#insights"><i class="fa-solid fa-sparkles nav-ic"></i> AI Insights</a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="flex items-center justify-between mb-0">
+        <div class="user-chip">
+          <div class="avatar" id="sidebar-avatar">U</div>
+          <div>
+            <div class="name" id="sidebar-name">User</div>
+            <div class="role">Personal Account</div>
+          </div>
+        </div>
+        <button class="icon-btn" data-action="toggle-theme" aria-label="Toggle dark mode">
+          <i class="fa-solid fa-moon icon-moon"></i>
+          <i class="fa-solid fa-sun icon-sun"></i>
+        </button>
+      </div>
+      <a href="#" class="logout-link" id="logout-btn"><i class="fa-solid fa-right-from-bracket"></i> Log Out</a>
+    </div>
+  </aside>
+
+  <main class="main-content">
+    <div class="topbar">
+      <button class="icon-btn nav-toggle" data-action="toggle-sidebar" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+      <div>
+        <h1 id="welcome-heading">Welcome!</h1>
+        <p>Here's where your money stands today.</p>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-outline btn-sm" id="add-income-btn"><i class="fa-solid fa-plus"></i> Add Income</button>
+        <button class="btn btn-primary btn-sm" id="add-expense-btn"><i class="fa-solid fa-plus"></i> Add Expense</button>
+      </div>
+    </div>
+
+    <div id="budget-alert"></div>
+
+    <section id="overview">
+      <div class="stat-cards">
+        <div class="stat-card income">
+          <div class="stat-top"><div class="stat-icon"><i class="fa-solid fa-arrow-down"></i></div><span class="trend up">Income</span></div>
+          <div class="value" id="stat-income">NRs 0</div>
+          <div class="label">Monthly Income</div>
+        </div>
+        <div class="stat-card expense">
+          <div class="stat-top"><div class="stat-icon"><i class="fa-solid fa-arrow-up"></i></div><span class="trend down">Expense</span></div>
+          <div class="value" id="stat-expense">NRs 0</div>
+          <div class="label">Monthly Expenditure</div>
+        </div>
+        <div class="stat-card savings">
+          <div class="stat-top"><div class="stat-icon"><i class="fa-solid fa-piggy-bank"></i></div><span class="trend up">Savings</span></div>
+          <div class="value" id="stat-savings">NRs 0</div>
+          <div class="label">Net Savings</div>
+        </div>
+        <div class="stat-card profit">
+          <div class="stat-top"><div class="stat-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div><span class="trend up">Loans</span></div>
+          <div class="value" id="stat-loans">0</div>
+          <div class="label">Active Loans</div>
+        </div>
+      </div>
+
+      <div class="dash-grid">
+        <div class="panel">
+          <div class="panel-head"><h3>Expense Breakdown</h3><span class="text-small">This period</span></div>
+          <div class="chart-wrap"><canvas id="expense-pie"></canvas></div>
+          <ul class="legend-list" id="expense-legend"></ul>
+        </div>
+        <div class="panel" id="transactions">
+          <div class="panel-head"><h3>Recent Transactions</h3><a href="#reports" class="text-small">View all</a></div>
+          <div class="tx-list" id="tx-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="loans" class="mt-4">
+      <div class="panel">
+        <div class="panel-head">
+          <h3>Loan Management</h3>
+          <button class="btn btn-primary btn-sm" id="add-loan-btn"><i class="fa-solid fa-plus"></i> Add Loan</button>
+        </div>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>Loan ID</th><th>Name</th><th>Amount</th><th>Purpose</th><th>Status</th><th>Due Date</th></tr></thead>
+            <tbody id="loans-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <div class="dash-grid mt-4">
+      <section id="savings">
+        <div class="panel">
+          <div class="panel-head">
+            <h3>Savings Goals</h3>
+            <button class="btn btn-outline btn-sm" id="add-goal-btn"><i class="fa-solid fa-plus"></i> New Goal</button>
+          </div>
+          <div id="goals-list"></div>
+        </div>
+      </section>
+
+      <section id="calendar">
+        <div class="panel">
+          <div class="panel-head"><h3>Loan &amp; Bill Calendar</h3><i class="fa-solid fa-bell" title="Alarm & vibration reminders enabled"></i></div>
+          <div class="calendar" id="calendar-view"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="dash-grid mt-4">
+      <section id="reports">
+        <div class="panel">
+          <div class="panel-head"><h3>Reports</h3></div>
+          <p>Export your transaction history for the month or year.</p>
+          <div class="flex gap-2">
+            <button class="btn btn-outline btn-sm" id="export-csv-btn"><i class="fa-solid fa-file-csv"></i> Export CSV</button>
+            <button class="btn btn-outline btn-sm" id="export-pdf-btn"><i class="fa-solid fa-file-pdf"></i> Export PDF</button>
+          </div>
+          <div class="chart-wrap mt-4" style="height:220px;"><canvas id="trend-chart"></canvas></div>
+        </div>
+      </section>
+
+      <section id="insights">
+        <div class="panel">
+          <div class="panel-head"><h3>AI-Powered Financial Tips</h3><i class="fa-solid fa-robot"></i></div>
+          <div id="insights-list"></div>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- Add Income/Expense Modal -->
+<div class="modal-overlay hidden" id="tx-modal">
+  <div class="modal">
+    <button class="icon-btn close-modal" data-close="tx-modal"><i class="fa-solid fa-xmark"></i></button>
+    <h3 id="tx-modal-title">Add Transaction</h3>
+    <form id="tx-form">
+      <input type="hidden" id="tx-type">
+      <div class="form-group">
+        <label for="tx-category">Category</label>
+        <div class="input-wrap"><i class="fa-solid fa-tag field-icon"></i>
+          <select id="tx-category" required></select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="tx-amount">Amount (NRs)</label>
+        <div class="input-wrap"><i class="fa-solid fa-money-bill field-icon"></i>
+          <input type="number" id="tx-amount" min="1" required placeholder="e.g. 2500">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="tx-date">Date</label>
+        <div class="input-wrap"><i class="fa-solid fa-calendar field-icon"></i>
+          <input type="date" id="tx-date" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="tx-desc">Description (optional)</label>
+        <div class="input-wrap"><i class="fa-solid fa-pen field-icon"></i>
+          <input type="text" id="tx-desc" placeholder="e.g. Weekly groceries">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Save Transaction</button>
+    </form>
+  </div>
+</div>
+
+<!-- Add Loan Modal -->
+<div class="modal-overlay hidden" id="loan-modal">
+  <div class="modal">
+    <button class="icon-btn close-modal" data-close="loan-modal"><i class="fa-solid fa-xmark"></i></button>
+    <h3>Apply for a Loan</h3>
+    <form id="loan-form">
+      <div class="form-group">
+        <label for="loan-name">Loan / Equipment Name</label>
+        <div class="input-wrap"><i class="fa-solid fa-tag field-icon"></i><input type="text" id="loan-name" required placeholder="e.g. Home Repair Loan"></div>
+      </div>
+      <div class="form-group">
+        <label for="loan-amount">Amount (NRs)</label>
+        <div class="input-wrap"><i class="fa-solid fa-money-bill field-icon"></i><input type="number" id="loan-amount" min="1000" required></div>
+      </div>
+      <div class="form-group">
+        <label for="loan-purpose">Purpose</label>
+        <div class="input-wrap"><i class="fa-solid fa-circle-info field-icon"></i><input type="text" id="loan-purpose" required placeholder="Brief reason for the loan"></div>
+      </div>
+      <div class="form-group">
+        <label for="loan-frequency">Repayment Frequency</label>
+        <div class="input-wrap"><i class="fa-solid fa-calendar-check field-icon"></i>
+          <select id="loan-frequency"><option value="monthly">Monthly</option><option value="biweekly">Bi-weekly</option><option value="daily">Daily</option></select>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Submit Application</button>
+    </form>
+  </div>
+</div>
+
+<!-- Add Savings Goal Modal -->
+<div class="modal-overlay hidden" id="goal-modal">
+  <div class="modal">
+    <button class="icon-btn close-modal" data-close="goal-modal"><i class="fa-solid fa-xmark"></i></button>
+    <h3>Create Savings Goal</h3>
+    <form id="goal-form">
+      <div class="form-group">
+        <label for="goal-name">Goal Name</label>
+        <div class="input-wrap"><i class="fa-solid fa-bullseye field-icon"></i><input type="text" id="goal-name" required placeholder="e.g. New Laptop"></div>
+      </div>
+      <div class="form-group">
+        <label for="goal-target">Target Amount (NRs)</label>
+        <div class="input-wrap"><i class="fa-solid fa-money-bill field-icon"></i><input type="number" id="goal-target" min="500" required></div>
+      </div>
+      <div class="form-group">
+        <label for="goal-deadline">Target Date</label>
+        <div class="input-wrap"><i class="fa-solid fa-calendar field-icon"></i><input type="date" id="goal-deadline" required></div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Create Goal</button>
+    </form>
+  </div>
+</div>
+
+<!-- Chatbot -->
+<button class="chat-fab" data-action="toggle-chat" aria-label="Open assistant"><i class="fa-solid fa-comment-dots"></i></button>
+<div class="chat-window hidden" id="chat-window">
+  <div class="chat-header"><span><i class="fa-solid fa-robot"></i> HISAB Assistant</span><button class="icon-btn" id="chat-close" style="width:28px;height:28px;color:#fff;"><i class="fa-solid fa-xmark"></i></button></div>
+  <div class="chat-body" id="chat-body">
+    <div class="chat-msg bot">Hi! Ask me about loans, savings, expenses, or repayments.</div>
+  </div>
+  <form class="chat-input-row" id="chat-form">
+    <input type="text" id="chat-input" placeholder="Type a message…">
+    <button type="submit"><i class="fa-solid fa-paper-plane"></i></button>
+  </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/dashboard.js"></script>
+<script>
+  const session = Hisab.requireAuth('personal');
+  let data;
+
+  function populateCategorySelect(type) {
+    const sel = document.getElementById('tx-category');
+    const list = type === 'income' ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
+    sel.innerHTML = list.map(c => `<option value="${c}">${c}</option>`).join('');
+  }
+
+  function refresh() {
+    const summary = summarize(data);
+    document.getElementById('stat-income').textContent = Hisab.currency(summary.income);
+    document.getElementById('stat-expense').textContent = Hisab.currency(summary.expense);
+    document.getElementById('stat-savings').textContent = Hisab.currency(summary.savings);
+    document.getElementById('stat-loans').textContent = data.loans.filter(l => l.status === 'active' || l.status === 'pending').length;
+
+    const breakdown = expenseBreakdown(data);
+    HisabCharts.renderPie('expense-pie', Object.keys(breakdown), Object.values(breakdown));
+    const legend = document.getElementById('expense-legend');
+    legend.innerHTML = Object.entries(breakdown).map(([cat, amt], i) => `
+      <li><span class="dot" style="background:${HisabCharts.PALETTE[i % HisabCharts.PALETTE.length]}"></span>${cat}<span class="amt">${Hisab.currency(amt)}</span></li>
+    `).join('') || '<li>No expenses logged yet.</li>';
+
+    renderTransactionList(document.getElementById('tx-list'), data.transactions);
+    renderLoansTable(document.getElementById('loans-table'), data.loans);
+    renderGoals(document.getElementById('goals-list'), data.savingsGoals);
+    renderCalendar(document.getElementById('calendar-view'), data.reminders);
+    renderInsights(document.getElementById('insights-list'), aiTips(summary, breakdown));
+
+    // Budget alert at 80% threshold
+    const alertBox = document.getElementById('budget-alert');
+    if (summary.income > 0 && summary.expense >= summary.income * 0.8) {
+      alertBox.innerHTML = `<div class="alert-banner warning"><i class="fa-solid fa-triangle-exclamation"></i> You've used ${Math.round((summary.expense/summary.income)*100)}% of your monthly income. Consider reviewing your budget.</div>`;
+    } else {
+      alertBox.innerHTML = '';
+    }
+
+    // Simple trend chart: last 6 transactions cumulative
+    const last = data.transactions.slice(0, 8).reverse();
+    HisabCharts.renderLine('trend-chart', last.map(t => t.date), [{ label: 'Amount', data: last.map(t => t.type === 'income' ? t.amount : -t.amount) }]);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    if (!session) return;
+    document.getElementById('welcome-heading').textContent = `Welcome, ${session.firstName || 'there'}!`;
+    document.getElementById('sidebar-name').textContent = session.firstName || session.email;
+    document.getElementById('sidebar-avatar').textContent = (session.firstName || session.email || 'U').charAt(0).toUpperCase();
+
+    data = HisabData.loadData(session.email, 'personal');
+    refresh();
+    initChatbot();
+
+    document.getElementById('logout-btn').addEventListener('click', (e) => { e.preventDefault(); Hisab.logout(); });
+
+    // Transaction modal
+    const txModal = document.getElementById('tx-modal');
+    document.getElementById('add-income-btn').addEventListener('click', () => {
+      document.getElementById('tx-modal-title').textContent = 'Add Income';
+      document.getElementById('tx-type').value = 'income';
+      populateCategorySelect('income');
+      document.getElementById('tx-date').value = new Date().toISOString().slice(0, 10);
+      txModal.classList.remove('hidden');
+    });
+    document.getElementById('add-expense-btn').addEventListener('click', () => {
+      document.getElementById('tx-modal-title').textContent = 'Add Expense';
+      document.getElementById('tx-type').value = 'expense';
+      populateCategorySelect('expense');
+      document.getElementById('tx-date').value = new Date().toISOString().slice(0, 10);
+      txModal.classList.remove('hidden');
+    });
+    document.getElementById('tx-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      data = HisabData.addTransaction(session.email, data, {
+        type: document.getElementById('tx-type').value,
+        category: document.getElementById('tx-category').value,
+        amount: Number(document.getElementById('tx-amount').value),
+        date: document.getElementById('tx-date').value,
+        description: document.getElementById('tx-desc').value
+      });
+      txModal.classList.add('hidden');
+      e.target.reset();
+      refresh();
+      Hisab.toast('Transaction saved!', 'success');
+    });
+
+    // Loan modal
+    const loanModal = document.getElementById('loan-modal');
+    document.getElementById('add-loan-btn').addEventListener('click', () => loanModal.classList.remove('hidden'));
+    document.getElementById('loan-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      data = HisabData.addLoan(session.email, data, {
+        type: 'personal',
+        equipmentName: document.getElementById('loan-name').value,
+        amount: Number(document.getElementById('loan-amount').value),
+        purpose: document.getElementById('loan-purpose').value,
+        repaymentFrequency: document.getElementById('loan-frequency').value,
+        dueDate: ''
+      });
+      loanModal.classList.add('hidden');
+      e.target.reset();
+      refresh();
+      Hisab.toast('Loan application submitted for review.', 'success');
+    });
+
+    // Goal modal
+    const goalModal = document.getElementById('goal-modal');
+    document.getElementById('add-goal-btn').addEventListener('click', () => goalModal.classList.remove('hidden'));
+    document.getElementById('goal-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      data = HisabData.addSavingsGoal(session.email, data, {
+        name: document.getElementById('goal-name').value,
+        target: Number(document.getElementById('goal-target').value),
+        deadline: document.getElementById('goal-deadline').value
+      });
+      goalModal.classList.add('hidden');
+      e.target.reset();
+      refresh();
+      Hisab.toast('Savings goal created!', 'success');
+    });
+
+    document.querySelectorAll('.close-modal').forEach(btn => {
+      btn.addEventListener('click', () => document.getElementById(btn.getAttribute('data-close')).classList.add('hidden'));
+    });
+
+    document.getElementById('export-csv-btn').addEventListener('click', () => exportCSV(data.transactions));
+    document.getElementById('export-pdf-btn').addEventListener('click', () => window.print());
+  });
+</script>
+</body>
+</html>
